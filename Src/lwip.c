@@ -95,12 +95,12 @@ void MX_LWIP_Init(void)
     netif_set_down(&gnetif);
   }
 
-  /* Set the link callback function, this function is called on change of link status*/
-  netif_set_link_callback(&gnetif, ethernet_link_status_updated);
-
-  /* Create the Ethernet link handler thread */
-  osThreadDef(EthLink, ethernet_link_thread, osPriorityNormal, 0, configMINIMAL_STACK_SIZE *2);
-  osThreadCreate (osThread(EthLink), &gnetif);
+//  /* Set the link callback function, this function is called on change of link status*/
+//  netif_set_link_callback(&gnetif, ethernet_link_status_updated);
+//
+//  /* Create the Ethernet link handler thread */
+//  osThreadDef(EthLink, ethernet_link_thread, osPriorityIdle, 0, configMINIMAL_STACK_SIZE *2);
+//  osThreadCreate (osThread(EthLink), &gnetif);
 
 /* USER CODE BEGIN 3 */
 

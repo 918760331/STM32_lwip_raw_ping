@@ -46,7 +46,7 @@
 
 /* ETH Setting  */
 #define ETH_RX_BUFFER_SIZE                     ( 1536UL )
-#define ETH_DMA_TRANSMIT_TIMEOUT               ( 20U )
+#define ETH_DMA_TRANSMIT_TIMEOUT               ( 5U )
 
 /* USER CODE BEGIN 1 */
 
@@ -107,7 +107,7 @@ ETH_HandleTypeDef heth;
 ETH_TxPacketConfig TxConfig;
 
 /* Memory Pool Declaration */
-LWIP_MEMPOOL_DECLARE(RX_POOL, 10, sizeof(struct pbuf_custom), "Zero-copy RX PBUF pool");
+LWIP_MEMPOOL_DECLARE(RX_POOL, 20, sizeof(struct pbuf_custom), "Zero-copy RX PBUF pool");
 
 /* Private function prototypes -----------------------------------------------*/
 int32_t ETH_PHY_IO_Init(void);
@@ -159,7 +159,7 @@ void HAL_ETH_MspInit(ETH_HandleTypeDef* ethHandle)
     PA7     ------> ETH_CRS_DV
     PB11     ------> ETH_TX_EN 
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_12;
+    GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_14;  //12 for LAN8720    14 for LAN8742
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -281,9 +281,9 @@ static void low_level_init(struct netif *netif)
   MACAddr[0] = 0x00;
   MACAddr[1] = 0x80;
   MACAddr[2] = 0xE1;
-  MACAddr[3] = 0x00;
-  MACAddr[4] = 0x00;
-  MACAddr[5] = 0x00;
+  MACAddr[3] = 0x20;
+  MACAddr[4] = 0x04;
+  MACAddr[5] = 0x13;
   heth.Init.MACAddr = &MACAddr[0];
   heth.Init.MediaInterface = HAL_ETH_RMII_MODE;
   heth.Init.TxDesc = DMATxDscrTab;
@@ -427,8 +427,17 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   err_t errval = ERR_OK;
   ETH_BufferTypeDef Txbuffer[ETH_TX_DESC_CNT];
   
+  static sys_sem_t ousem = NULL;
+  if(ousem == NULL)
+  {
+    sys_sem_new(&ousem,0);
+    sys_sem_signal(&ousem);
+  }
+
   memset(Txbuffer, 0 , ETH_TX_DESC_CNT*sizeof(ETH_BufferTypeDef));
   
+  sys_sem_wait(&ousem);
+
   for(q = p; q != NULL; q = q->next)
   {
     if(i >= ETH_TX_DESC_CNT)	
@@ -454,9 +463,11 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
   TxConfig.Length = framelen;
   TxConfig.TxBuffer = Txbuffer;
 
-//  SCB_InvalidateDCache();
+  SCB_CleanInvalidateDCache();
   HAL_ETH_Transmit(&heth, &TxConfig, ETH_DMA_TRANSMIT_TIMEOUT);
   
+  sys_sem_signal(&ousem);
+
   return errval;
 }
 
@@ -481,11 +492,11 @@ static struct pbuf * low_level_input(struct netif *netif)
     HAL_ETH_GetRxDataLength(&heth, &framelength);
     
     /* Build Rx descriptor to be ready for next data reception */
-
+    HAL_ETH_BuildRxDescriptors(&heth);
 
 #if !defined(DUAL_CORE) || defined(CORE_CM7)
     /* Invalidate data cache for ETH Rx Buffers */
-    SCB_InvalidateDCache_by_Addr((uint32_t *)Rx_Buff, (4 * 1536UL));
+    SCB_InvalidateDCache_by_Addr((uint32_t *)Rx_Buff, (ETH_RX_DESC_CNT * ETH_RX_BUFFER_SIZE));
 #endif
 
     custom_pbuf  = (struct pbuf_custom*)LWIP_MEMPOOL_ALLOC(RX_POOL);
@@ -522,7 +533,7 @@ void ethernetif_input(void const * argument)
         
         p = low_level_input( netif );
 
-        HAL_ETH_BuildRxDescriptors(&heth);
+
         if (p != NULL)
         {
           if (netif->input( p, netif) != ERR_OK )
@@ -784,10 +795,10 @@ void ethernet_link_thread(void const * argument)
       MACConf.DuplexMode = duplex;
       MACConf.Speed = speed;
       HAL_ETH_SetMACConfig(&heth, &MACConf);
+      HAL_ETH_Start_IT(&heth);
+	  netif_set_up(netif);
+	  netif_set_link_up(netif);
     }
-    HAL_ETH_Start_IT(&heth);
-    netif_set_up(netif);
-    netif_set_link_up(netif);
   }
   osDelay(100);
   }

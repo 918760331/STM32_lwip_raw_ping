@@ -617,7 +617,7 @@
  * (but this should only occur for AutoIP).
  */
 #if !defined ETHARP_TABLE_MATCH_NETIF || defined __DOXYGEN__
-#define ETHARP_TABLE_MATCH_NETIF        0
+#define ETHARP_TABLE_MATCH_NETIF        1
 #endif
 /**
  * @}
