@@ -1,0 +1,2 @@
+udpecho_netconn.c:44:1:udpecho_thread	4128	static
+udpecho_netconn.c:84:1:udpecho_init	16	static

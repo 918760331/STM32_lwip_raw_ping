@@ -36,6 +36,7 @@ Middlewares/Third_Party/LwIP/system/OS/sys_arch.o: \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+ D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
@@ -136,6 +137,8 @@ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h:
 
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
+
+D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
 

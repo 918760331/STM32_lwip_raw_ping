@@ -19,6 +19,8 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
+#include <tcpecho_netconn.h>
+#include <udpecho_netconn.h>
 #include "FreeRTOS.h"
 #include "task.h"
 #include "main.h"
@@ -26,12 +28,18 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */     
-
+#include "client_netconn.h"
+#include "client_socket.h"
+#include "iperf_socket_client.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+osThreadId led1TaskHandle;
+osThreadId led2TaskHandle;
 
+static void led1BlinkTask(void* parameter);
+static void led2BlinkTask(void* parameter);
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -91,6 +99,12 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 512);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
+//  osThreadDef(led1Task, led1BlinkTask, osPriorityNormal, 0, 128);
+//  led1TaskHandle = osThreadCreate(osThread(led1Task), NULL);
+//
+//  osThreadDef(led2Task, led2BlinkTask, osPriorityNormal, 0, 128);
+//  led2TaskHandle = osThreadCreate(osThread(led2Task), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -111,6 +125,21 @@ void StartDefaultTask(void const * argument)
   /* init code for LWIP */
   MX_LWIP_Init();
 
+//  client_netconn_init();
+//  tcpecho_init();
+//  udpecho_init();
+//  client_socket_init();
+//  iperf_server_init();
+  iperf_socket_client_init();
+
+//  vPortEnterCritical();
+//
+//
+//
+//  vTaskDelete(defaultTaskHandle);
+//
+//  vPortExitCritical();
+
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   for(;;)
@@ -122,7 +151,19 @@ void StartDefaultTask(void const * argument)
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-     
+static void led1BlinkTask(void* parameter){
+	while(1){
+		HAL_GPIO_TogglePin(LED0_GPIO_Port, LED0_Pin);
+		osDelay(500);
+	}
+}
+
+static void led2BlinkTask(void* parameter){
+	while(1){
+		HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
+		osDelay(1000);
+	}
+}
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

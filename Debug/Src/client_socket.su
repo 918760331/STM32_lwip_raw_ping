@@ -1,0 +1,2 @@
+client_socket.c:43:13:client	88	static
+client_socket.c:99:1:client_socket_init	16	static

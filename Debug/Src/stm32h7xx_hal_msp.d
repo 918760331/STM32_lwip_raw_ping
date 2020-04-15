@@ -28,7 +28,8 @@ Src/stm32h7xx_hal_msp.o: ../Src/stm32h7xx_hal_msp.c ../Inc/main.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
- D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h
+ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+ D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h
 
 ../Inc/main.h:
 
@@ -91,3 +92,5 @@ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h:
 
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
+
+D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h:

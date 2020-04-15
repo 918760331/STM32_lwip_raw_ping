@@ -1,0 +1,2 @@
+iperf_socket_client.c:42:13:iperf_client	96	static
+iperf_socket_client.c:122:1:iperf_socket_client_init	16	static

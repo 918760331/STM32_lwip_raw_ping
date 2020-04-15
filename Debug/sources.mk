@@ -32,4 +32,5 @@ Middlewares/Third_Party/LwIP/src/netif/ppp \
 Middlewares/Third_Party/LwIP/system/OS \
 Src \
 Startup \
+print \
 

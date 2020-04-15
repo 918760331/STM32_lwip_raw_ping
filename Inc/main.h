@@ -32,7 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "mpprintf.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -59,9 +59,9 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 #define LED1_Pin GPIO_PIN_1
-#define LED1_GPIO_Port GPIOB
+#define LED1_GPIO_Port GPIOI
 #define LED0_Pin GPIO_PIN_0
-#define LED0_GPIO_Port GPIOB
+#define LED0_GPIO_Port GPIOI
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

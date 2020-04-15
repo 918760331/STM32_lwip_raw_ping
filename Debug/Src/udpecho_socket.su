@@ -1,0 +1,2 @@
+udpecho_socket.c:45:1:udpecho_thread	72	static
+udpecho_socket.c:108:1:udpecho_socket_init	16	static

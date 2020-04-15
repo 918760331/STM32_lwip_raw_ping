@@ -1,0 +1,2 @@
+tcpecho_netconn.c:41:1:tcpecho_thread	48	static
+tcpecho_netconn.c:96:1:tcpecho_init	16	static

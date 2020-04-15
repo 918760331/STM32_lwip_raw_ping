@@ -1,4 +1,5 @@
-Src/freertos.o: ../Src/freertos.c \
+Src/freertos.o: ../Src/freertos.c ../Inc/tcpecho_netconn.h \
+ ../Inc/udpecho_netconn.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -38,6 +39,7 @@ Src/freertos.o: ../Src/freertos.c \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+ D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
@@ -45,7 +47,13 @@ Src/freertos.o: ../Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Inc/client_netconn.h ../Inc/main.h ../Inc/client_socket.h \
+ ../Inc/iperf_socket_client.h
+
+../Inc/tcpecho_netconn.h:
+
+../Inc/udpecho_netconn.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -127,6 +135,8 @@ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.
 
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
 
+D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h:
+
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
@@ -142,3 +152,11 @@ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Inc/client_netconn.h:
+
+../Inc/main.h:
+
+../Inc/client_socket.h:
+
+../Inc/iperf_socket_client.h:

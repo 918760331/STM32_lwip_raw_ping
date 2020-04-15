@@ -1,0 +1,2 @@
+client_netconn.c:40:13:client	80	static
+client_netconn.c:87:1:client_netconn_init	16	static

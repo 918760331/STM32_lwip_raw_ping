@@ -340,7 +340,7 @@ static void low_level_init(struct netif *netif)
   RxPktSemaphore = osSemaphoreCreate(osSemaphore(SEM) , 1 );
 
   /* create the task that handles the ETH_MAC */
-  osThreadDef(EthIf, ethernetif_input, 4, netif, INTERFACE_THREAD_STACK_SIZE);
+  osThreadDef(EthIf, ethernetif_input, 5, netif, INTERFACE_THREAD_STACK_SIZE);
   osThreadCreate (osThread(EthIf), netif);
 /* USER CODE BEGIN PHY_PRE_CONFIG */ 
     

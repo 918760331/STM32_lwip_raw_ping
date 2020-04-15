@@ -1,2 +1,4 @@
-freertos.c:68:6:MX_FREERTOS_Init	40	static
-freertos.c:107:6:StartDefaultTask	16	static
+freertos.c:76:6:MX_FREERTOS_Init	40	static
+freertos.c:121:6:StartDefaultTask	16	static
+freertos.c:154:13:led1BlinkTask	16	static
+freertos.c:161:13:led2BlinkTask	16	static

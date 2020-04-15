@@ -29,7 +29,7 @@ Src/stm32h7xx_it.o: ../Src/stm32h7xx_it.c ../Inc/main.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_ex.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
- ../Inc/stm32h7xx_it.h \
+ D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h ../Inc/stm32h7xx_it.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -101,6 +101,8 @@ D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_i2c_
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h:
 
 D:/H743II_CUBE/lwip_raw_ping/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
+
+D:/H743II_CUBE/lwip_raw_ping/print/mpprintf.h:
 
 ../Inc/stm32h7xx_it.h:
 
